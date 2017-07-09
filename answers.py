@@ -88,6 +88,25 @@ def searchBST(B, x):
         else:
             return searchBST(B.right, x)
 
+# 2.2.1 Use the insertion at the leaf principle to create the binary search tree
+# obtained, from an empty tree, by successive insertions of the following values
+# (in that order):
+# 13,20,5,1,15,10,18,25,4,21,27,7,12
+
+# 2. Write a function that adds an element to a binary search tree.
+
+def insertBST(B, x):
+    if B == None:
+        return BinTree(x, None, None)
+    else:
+        if x == B.key:
+            return False
+        elif x < B.key:
+            B.left = insertBST(B.left, x)
+        elif x > B.key:
+            B.right = insertBST(B.right, x)
+        return B
+
 ################################################################################
 # Tests
 
@@ -96,7 +115,8 @@ D = BinTree(4, None, None)
 B = BinTree(3, None, D)
 A = BinTree(7, B, C)
 
-tree = listToAVL(list("12345679"), 0, 8)
+tree = listToAVL([1,2,3,4,5,6,8,7,9], 0, 9)
+tree = insertBST(tree, 10)
 toSVG(tree, "bst")
 print(minBST(tree))
 print(maxBST(tree))
