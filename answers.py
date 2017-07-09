@@ -42,13 +42,19 @@ def listToAVL (L, l, r):
 		T.right = listToAVL(L, m+1,r)
 		return T
 
-def list_to_avl(l):
-    if len(l) != 0:
-        B = BinTree(None, None, None)
-        B.key = l.pop(len(l) // 2)
-        B.left = list_to_avl(l[:(len(l) // 2):])
-        B.right = list_to_avl(l[(len(l) // 2)::])
-        return B
+# 2 Write a function that tests whether a binary tree is a search tree or not.
+
+def isBST(T):
+    if T == None:
+        return True
+    else:
+        if T.left != None:
+            if T.left.key > T.key:
+                return False
+        if T.right != None:
+            if T.right.key < T.key:
+                return False
+        return(isBST(T.left) and isBST(T.right))
 
 ################################################################################
 # Tests
@@ -58,7 +64,6 @@ D = BinTree(4, None, None)
 B = BinTree(3, None, D)
 A = BinTree(7, B, C)
 
-# tree = list_to_avl(list("123456789"), 0, 9)
-tree = list_to_avl(list("123456789"))
-print(tree.key)
+tree = listToAVL(list("123456789"), 0, 9)
 toSVG(tree, "bst")
+print(isBST(tree))
