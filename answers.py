@@ -17,7 +17,7 @@ class BinTree:
 ################################################################################
 # Exercises
 
-# 1.1 Write a function that builds a sorted list with the elements of a binary
+# 1.1.1 Write a function that builds a sorted list with the elements of a binary
 # search tree.
 
 def bst_to_list(T, l = []):
@@ -31,8 +31,8 @@ def bst_to_list(T, l = []):
             (bst_to_list(T.right, l))
     return l
 
-# 1.2 Write a function that builds a balanced binary search tree using a sorted
-# list.
+# 1.1.2 Write a function that builds a balanced binary search tree using a
+# sorted list.
 
 def listToAVL (L, l, r):
 	if l < r:
@@ -42,7 +42,7 @@ def listToAVL (L, l, r):
 		T.right = listToAVL(L, m+1,r)
 		return T
 
-# 2 Write a function that tests whether a binary tree is a search tree or not.
+# 1.2 Write a function that tests whether a binary tree is a search tree or not.
 
 def isBST(T):
     if T == None:
@@ -55,6 +55,24 @@ def isBST(T):
             if T.right.key < T.key:
                 return False
         return(isBST(T.left) and isBST(T.right))
+
+# 2.1 (Researches)
+# 2.1.1 (a) Where are the maximum and the minimum values in a non-empty binary
+# search tree?
+
+"""
+The maximum value of a BST is stored in the most right leaf.
+The minimum value of a BST is stored in the most left leaf.
+"""
+
+# 2.1.1 (b) Write the two functions minBST(B) and maxBST(B), where B is a non
+# empty BST.
+
+def minBST(B):
+    pass
+
+def maxBST(B):
+    pass
 
 ################################################################################
 # Tests
