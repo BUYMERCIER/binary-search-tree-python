@@ -74,6 +74,20 @@ def maxBST(B):
         else:
             return maxBST(B.right)
 
+# 2.1.2 Write a function that searches a value x in a binary search tree. It
+# returns the tree whose root contains x if found, the value None otherwise.
+
+def searchBST(B, x):
+    if B == None:
+        return None
+    else:
+        if B.key == x:
+            return B
+        elif x < B.key:
+            return searchBST(B.left, x)
+        else:
+            return searchBST(B.right, x)
+
 ################################################################################
 # Tests
 
