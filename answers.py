@@ -4,6 +4,7 @@ __author__ = "K4LI"
 # REQUIREMENTS
 
 from toSVG.toSVG import *
+from os import *
 
 class BinTree:
     def __init__(self, key, left, right):
@@ -45,16 +46,7 @@ def listToAVL (L, l, r):
 # 1.2 Write a function that tests whether a binary tree is a search tree or not.
 
 def isBST(T):
-    if T == None:
-        return True
-    else:
-        if T.left != None:
-            if T.left.key > T.key:
-                return False
-        if T.right != None:
-            if T.right.key < T.key:
-                return False
-        return(isBST(T.left) and isBST(T.right))
+    pass
 
 # 2.1 (Researches)
 # 2.1.1 (a) Where are the maximum and the minimum values in a non-empty binary
@@ -69,10 +61,18 @@ The minimum value of a BST is stored in the most left leaf.
 # empty BST.
 
 def minBST(B):
-    pass
+    if B != None:
+        if B.left == None:
+            return B.key
+        else:
+            return minBST(B.left)
 
 def maxBST(B):
-    pass
+    if B != None:
+        if B.right == None:
+            return B.key
+        else:
+            return maxBST(B.right)
 
 ################################################################################
 # Tests
@@ -82,6 +82,7 @@ D = BinTree(4, None, None)
 B = BinTree(3, None, D)
 A = BinTree(7, B, C)
 
-tree = listToAVL(list("123456789"), 0, 9)
+tree = listToAVL(list("12345679"), 0, 8)
 toSVG(tree, "bst")
-print(isBST(tree))
+print(minBST(tree))
+print(maxBST(tree))
