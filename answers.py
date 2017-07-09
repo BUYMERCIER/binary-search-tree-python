@@ -3,6 +3,8 @@ __author__ = "K4LI"
 ################################################################################
 # REQUIREMENTS
 
+from toSVG.toSVG import *
+
 class BinTree:
     def __init__(self, key, left, right):
         """
@@ -22,12 +24,19 @@ def bst_to_list(T, l = []):
     if T == None:
         return None
     else:
-        l.append(T.key)
         if T.left != None:
-            bst_to_list(B.left)
+            bst_to_list(T.left, l)
+        l.append(T.key)
         if T.right != None:
-            bst_to_list(B.right)
+            (bst_to_list(T.right, l))
     return l
 
 ################################################################################
 # Tests
+
+C = BinTree(9, None, None)
+D = BinTree(4, None, None)
+B = BinTree(3, None, D)
+A = BinTree(7, B, C)
+
+print(bst_to_list(A))
